@@ -32,4 +32,11 @@ public class BookTest extends TestBase {
         booksPage.getListPartsOfMainPage();
         Assert.assertEquals(booksPage.listOfMainMenu,booksPage.expectedStringListOfMainMenu);
     }
+    @Test
+    public void getListMainMenuOnSidebar() {
+        booksPage = new BooksPage(driver);
+        booksPage.goToMainPage();
+        booksPage.getListPartsOfMainPageOnSidebar();
+        Assert.assertEquals(booksPage.listOfMainMenuSide,booksPage.expectedListOfMainMenuOnSidebar);
+    }
 }

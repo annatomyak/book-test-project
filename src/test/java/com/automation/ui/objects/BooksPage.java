@@ -4,6 +4,7 @@ import com.automation.ui.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
 
 
 import java.util.ArrayList;
@@ -15,13 +16,15 @@ public class BooksPage extends BasePage {
         super(driver);
     }
     public List<String> listOfMainMenu;
+    public List<String> listOfMainMenuOnSidebar;
+    public List<String> expectedListOfMainMenuOnSidebar;
+    public List<String> listOfMainMenuSide;
     public List<String> expectedStringListOfMainMenu=new ArrayList<>();
     public String authorOfBookText;
     public String nameOfBookText;
-
-    public List<String> expectedListOfMainMenu;
     private By bookUnknownDaughterLocator = By.xpath("//*[text()='Незнакомая дочь']");
     private By listOfMainMenuSelector = By.xpath("//*[@class='h-nav to-mob']/li/a");
+    private By listOfMainMenuOnSidebarSelector = By.xpath("//*[@class='side-bc']/li/a");
     public String baseUrl = "https://vknige.net/";
 
 
@@ -56,7 +59,6 @@ public class BooksPage extends BasePage {
             listOfMainMenu.add(e.getText());
 
         }
-
         expectedStringListOfMainMenu.add(0,"ГЛАВНАЯ");
         expectedStringListOfMainMenu.add(1,"ЖАНРЫ");
         expectedStringListOfMainMenu.add(2,"АВТОРЫ");
@@ -66,6 +68,29 @@ public class BooksPage extends BasePage {
         expectedStringListOfMainMenu.add(6,"#ОстаньтесьДома");
         expectedStringListOfMainMenu.add(7,"ОПРОС");
         expectedStringListOfMainMenu.add(8,"СЛУЧАЙНАЯ");
-        //expectedStringListOfMainMenu.toString();
+
+    }
+
+    public void getListPartsOfMainPageOnSidebar() {
+        driver.get(baseUrl);
+        listOfMainMenuOnSidebar=new ArrayList<>();
+        listOfMainMenuSide=new ArrayList<>();
+
+        List<WebElement> myElements = driver.findElements(listOfMainMenuOnSidebarSelector);
+        for(WebElement e : myElements) {
+            listOfMainMenuOnSidebar.add(e.getText());
+
+        }
+        listOfMainMenuSide=listOfMainMenuOnSidebar.subList(0,5);
+
+        expectedListOfMainMenuOnSidebar=new ArrayList<>();
+        expectedListOfMainMenuOnSidebar.add(0,"Главная страница");
+        expectedListOfMainMenuOnSidebar.add(1,"Библиотека");
+        expectedListOfMainMenuOnSidebar.add(2,"Стол заказов");
+        expectedListOfMainMenuOnSidebar.add(3,"Полные версии книг");
+
+        expectedListOfMainMenuOnSidebar.add(4,"Добавить книгу");
+
+
     }
 }
