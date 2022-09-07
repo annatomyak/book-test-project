@@ -1,6 +1,14 @@
 package com.automation.ui.tests;
 
-public class TestClass {
-    public void testMain(){}
+import com.automation.ui.TestBase;
+
+public class TestClass extends TestBase {
+    public void testMain(){
+        System.out.println("Anna");
+        System.out.println("Anna");
+    }
+
+
+
 
 }
