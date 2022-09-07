@@ -11,7 +11,10 @@ public class TestClass extends TestBase {
         System.out.println("Anna");
         System.out.println("Anna");
     }
-
+    public void testMain3(){
+        System.out.println("Anna");
+        System.out.println("Anna");
+    }
 
 
 }
